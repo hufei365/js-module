@@ -1,9 +1,9 @@
-
+console.log(`mod2 have loaded at ${+new Date}!`)
 define(function () {
-    console.log('mod2.js', new Date());
+    console.log(`mod2 have inited at ${new Date}!`)
     return {
-        getHello: function () {
-            return 'Hello World';
+        sayHi: function () {
+            console.log(`Hi, I'm mod2. And The time is ${new Date}`);
         }
     };
 });

@@ -1,16 +1,9 @@
-
+console.log(`mod1 have loaded at ${+new Date}!`)
 define(function () {
-    Promise.resolve(1);
-    let t = +new Date();
-    console.log(new Date);
-    while( +(new Date) - t < 2000){
-
-    }
-    console.log(new Date);
-    console.log('mod1.js', new Date());
+    console.log(`mod1 have inited at ${new Date}!`);
     return {
-        getHello: function () {
-            return 'Hello World';
+        sayHi: function () {
+            console.log(`Hi, I'm mod1. And The time is ${new Date}`);
         }
     };
 });
