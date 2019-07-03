@@ -14,7 +14,7 @@
 <body>
 
     <!-- AMD规范 -->
-    <script data-main="amd/main" src="amd/amd.js"></script>
+    <!-- <script data-main="amd/main" src="amd/amd.js"></script> -->
 
     <!-- CMD规范 -->
     <!-- <script src="cmd/cmd.js"></script>
@@ -44,16 +44,28 @@
 
         // document.body.addEventListener('mousemove', debounce(testDebounce, 300))
 
-        function throttle(fn, time){
-            let timer = null;
+        // function throttle(fn, time){
+        //     let timer = null;
 
-            return function(...args){
+        //     return function(...args){
+        //         let ctx = this;
+        //         if(!timer){
+        //             timer = setTimeout(function(){
+        //                 fn.apply(ctx, args);
+        //                 timer = null;
+        //             }, time);
+        //         }
+        //     }
+        // }
+
+        function throttle(fn, time) {
+            let prev = +new Date;
+
+            return function (...args) {
                 let ctx = this;
-                if(!timer){
-                    timer = setTimeout(function(){
-                        fn.apply(ctx, args);
-                        timer = null;
-                    }, time);
+                if (((+new Date) - prev) > time) {
+                    fn.apply(ctx, args);
+                    prev = +new Date;
                 }
             }
         }
@@ -63,7 +75,7 @@
             console.log(`throttle ${new Date}`);
         }
 
-        // document.addEventListener('mousemove', throttle(testThrottle, 1000).bind({event:"document"}))
+        document.addEventListener('mousemove', throttle(testThrottle, 1000).bind({event:"document"}))
 
 
 
